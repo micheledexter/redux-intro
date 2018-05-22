@@ -12,10 +12,15 @@ class App extends Component {
       }
     }
   }
-  buttonOneClicked = () => {
-    const action = { type: 'BUTTON_ONE', someProp: 'Hello!' };
+  reduce = (todo, value) => {
+    let action = null;
+    if (value) {
+      action = { type: todo, value: value };
+    } else {
+      action = { type: todo };
+    }
     this.props.dispatch(action);
-  };
+  }
 
   handleElementChange = propertyName => event => {
     this.setState({
@@ -29,15 +34,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <button onClick={this.buttonOneClicked}>Button One</button>
-        <button onClick={() => this.props.dispatch({ type: 'MINUS' })}>Minus</button><br />
-        <button onClick={() => this.props.dispatch({ type: 'BUTTON_TWO' })}>Button Two</button>
-        <button onClick={() => this.props.dispatch({ type: 'REMOVE_OREO' })}>Eat an Oreo</button><br />
+        <button onClick={() => this.reduce('BUTTON_ONE')}>Button One</button>
+        <button onClick={() => this.reduce('MINUS')}>Minus</button><br />
+        <button onClick={() => this.reduce('BUTTON_TWO')}>Button Two</button>
+        <button onClick={() => this.reduce('REMOVE_OREO')}>Eat an Oreo</button><br />
         <input onChange={this.handleElementChange('first')} />
-        <button onClick={() => this.props.dispatch({ type: 'SET_FIRST', value: this.state.midplace.first })}>Set first</button><br />
+        <button onClick={() => this.reduce('SET_FIRST', this.state.midplace.first)}>Set first</button><br />
         <input onChange={this.handleElementChange('second')} />
-        <button onClick={() => this.props.dispatch({ type: 'SET_SECOND', value: this.state.midplace.second })}>Set second</button><br />
-        <button onClick={() => this.props.dispatch({ type: 'SET_BOTH', values: [this.state.midplace.first, this.state.midplace.second]})}>SET BOTH!</button>
+        <button onClick={() => this.reduce('SET_SECOND', this.state.midplace.second)}>Set second</button><br />
+        <button onClick={() => this.reduce('SET_BOTH', [this.state.midplace.first, this.state.midplace.second])}>SET BOTH!</button>
       </div>
     );
   }
