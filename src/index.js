@@ -15,7 +15,9 @@ const firstReducer = (state = 0, action) => {
     } else if  (action.type === 'MINUS') {
         return --state;
     } else if (action.type === 'SET_FIRST') {
-        return (state = action.state);
+        return (state = action.value);
+    } else if (action.type === 'SET_BOTH') {
+        return (state = action.values[0]);
     }
     return state; // Return next state
 };
@@ -28,7 +30,9 @@ const secondReducer = (state = [], action) => {
         state.pop();
         return state;
     } else if (action.type === 'SET_SECOND') {
-        return (state = action.state);
+        return (state = action.value);
+    } else if (action.type === 'SET_BOTH') {
+        return (state = action.values[1]);
     }
     return state;
 };

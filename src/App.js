@@ -34,9 +34,10 @@ class App extends Component {
         <button onClick={() => this.props.dispatch({ type: 'BUTTON_TWO' })}>Button Two</button>
         <button onClick={() => this.props.dispatch({ type: 'REMOVE_OREO' })}>Eat an Oreo</button><br />
         <input onChange={this.handleElementChange('first')} />
-        <button onClick={() => this.props.dispatch({ type: 'SET_FIRST', state: this.state.midplace.first })}>Set first</button>
+        <button onClick={() => this.props.dispatch({ type: 'SET_FIRST', value: this.state.midplace.first })}>Set first</button><br />
         <input onChange={this.handleElementChange('second')} />
-        <button onClick={() => this.props.dispatch({ type: 'SET_SECOND', state: this.state.midplace.second })}>Set second</button>
+        <button onClick={() => this.props.dispatch({ type: 'SET_SECOND', value: this.state.midplace.second })}>Set second</button><br />
+        <button onClick={() => this.props.dispatch({ type: 'SET_BOTH', values: [this.state.midplace.first, this.state.midplace.second]})}>SET BOTH!</button>
       </div>
     );
   }
