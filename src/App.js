@@ -12,12 +12,12 @@ class App extends Component {
       }
     }
   }
-  reduce = (todo, value) => {
+  reduce = (type, value) => {
     let action = null;
     if (value) {
-      action = { type: todo, value: value };
+      action = { type, value };
     } else {
-      action = { type: todo };
+      action = { type };
     }
     this.props.dispatch(action);
   }
