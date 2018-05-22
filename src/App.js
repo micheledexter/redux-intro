@@ -3,8 +3,8 @@ import './App.css';
 import { connect } from 'react-redux';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       midplace: {
         first: '',
