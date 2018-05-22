@@ -12,7 +12,7 @@ class App extends Component {
       }
     }
   }
-  reduce = (type, value) => {
+  sendToRedux = (type, value) => {
     let action = null;
     if (value) {
       action = { type, value };
@@ -34,15 +34,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <button onClick={() => this.reduce('BUTTON_ONE')}>Button One</button>
-        <button onClick={() => this.reduce('MINUS')}>Minus</button><br />
-        <button onClick={() => this.reduce('BUTTON_TWO')}>Button Two</button>
-        <button onClick={() => this.reduce('REMOVE_OREO')}>Eat an Oreo</button><br />
+        <button onClick={() => this.sendToRedux('BUTTON_ONE')}>Button One</button>
+        <button onClick={() => this.sendToRedux('MINUS')}>Minus</button><br />
+        <button onClick={() => this.sendToRedux('BUTTON_TWO')}>Button Two</button>
+        <button onClick={() => this.sendToRedux('REMOVE_OREO')}>Eat an Oreo</button><br />
         <input onChange={this.handleElementChange('first')} />
-        <button onClick={() => this.reduce('SET_FIRST', this.state.midplace.first)}>Set first</button><br />
+        <button onClick={() => this.sendToRedux('SET_FIRST', this.state.midplace.first)}>Set first</button><br />
         <input onChange={this.handleElementChange('second')} />
-        <button onClick={() => this.reduce('SET_SECOND', this.state.midplace.second)}>Set second</button><br />
-        <button onClick={() => this.reduce('SET_BOTH', [this.state.midplace.first, this.state.midplace.second])}>SET BOTH!</button>
+        <button onClick={() => this.sendToRedux('SET_SECOND', this.state.midplace.second)}>Set second</button><br />
+        <button onClick={() => this.sendToRedux('SET_BOTH', [this.state.midplace.first, this.state.midplace.second])}>SET BOTH!</button>
       </div>
     );
   }
